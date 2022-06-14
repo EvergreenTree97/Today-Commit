@@ -1,4 +1,4 @@
-package team.example.brainfresher.ui.theme
+package com.evergreen.todaycommit
 
 import android.app.Activity
 import android.os.Build

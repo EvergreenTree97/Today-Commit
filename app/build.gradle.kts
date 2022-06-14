@@ -11,7 +11,7 @@ plugins {
 }
 android {
     compileSdk = Application.compileSdk
-    namespace = "team.duo.brainfresher"
+    namespace = "com.evergreen.todaycommit"
     defaultConfig {
         minSdk = Application.minSdk
         targetSdk = Application.targetSdk

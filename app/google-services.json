@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "100007902331",
+    "project_id": "todaycommit",
+    "storage_bucket": "todaycommit.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:100007902331:android:78bef1675ff7e57ecdb6de",
+        "android_client_info": {
+          "package_name": "com.evergreen.todaycommit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "100007902331-ngr1nd1p3knl7mqg43fp2oervbogfd1q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.evergreen.todaycommit",
+            "certificate_hash": "3b5a2240b3bbdb0013933b1c8c7a3af35e587af9"
+          }
+        },
+        {
+          "client_id": "100007902331-0eekjotmpbfv7d79vdb58cf137sistpf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCGXs6H7Ubx3CczjjzN6oE-z5bCi029zQE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "100007902331-0eekjotmpbfv7d79vdb58cf137sistpf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

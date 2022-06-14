@@ -15,7 +15,6 @@ object Dependencies {
 
     val Jetpack = listOf(
         "com.google.dagger:hilt-android:${Versions.Jetpack.Hilt}",
-        "androidx.hilt:hilt-navigation-compose:${Versions.Jetpack.Hilt}"
     )
 
     val Compose = listOf(

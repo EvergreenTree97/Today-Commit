@@ -1,4 +1,4 @@
-package team.example.brainfresher.ui.theme
+package com.evergreen.todaycommit
 
 import androidx.compose.ui.graphics.Color
 
