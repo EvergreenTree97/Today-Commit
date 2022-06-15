@@ -17,6 +17,12 @@ object Dependencies {
         "com.google.dagger:hilt-android:${Versions.Jetpack.Hilt}",
     )
 
+    val Network = listOf(
+        "com.squareup.retrofit2:retrofit:${Versions.Network.Retrofit}",
+        "com.squareup.okhttp3:logging-interceptor:${Versions.Network.OkHttp}",
+        "com.squareup.retrofit2:converter-jackson:${Versions.Network.Retrofit}"
+    )
+
     val Compose = listOf(
         "androidx.compose.material3:material3:${Versions.Compose.Material3}",
         "androidx.activity:activity-compose:${Versions.Compose.Activity}",

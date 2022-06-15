@@ -17,6 +17,11 @@ object Versions {
         const val Splash = "1.0.0-beta01"
     }
 
+    object Network {
+        const val Retrofit = "2.9.0"
+        const val OkHttp = "4.9.3"
+    }
+
     object Util {
         const val LeakCanary = "2.9.1"
         const val SecretsGradlePlugin = "2.0.0"
