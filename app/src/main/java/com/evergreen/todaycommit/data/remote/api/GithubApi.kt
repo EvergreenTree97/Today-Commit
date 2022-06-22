@@ -5,5 +5,5 @@ import retrofit2.http.GET
 
 interface GithubApi {
     @GET("/user")
-    fun getUser(): GithubUserData
+    suspend fun getUser(): GithubUserData
 }
