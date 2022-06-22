@@ -50,5 +50,6 @@ object Versions {
         const val JUnit = "5.8.2"
         const val JUnitGradle = "1.8.2.0"
         const val Coroutine = "1.6.0"
+        const val Mockk = "1.12.3"
     }
 }

@@ -53,6 +53,8 @@ dependencies {
     testRuntimeOnly(Dependencies.Test.JunitEngine)
     testImplementation(Dependencies.Test.JunitApi)
     testImplementation(Dependencies.Test.Coroutine)
+    testImplementation(Dependencies.Test.Mockk)
+    testImplementation(Dependencies.Test.MockkWebServer)
     Dependencies.Debug.forEach(::debugImplementation)
     Dependencies.Compiler.forEach(::kapt)
 

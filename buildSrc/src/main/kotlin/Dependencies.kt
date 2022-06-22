@@ -20,6 +20,7 @@ object Dependencies {
     val Network = listOf(
         "com.squareup.retrofit2:retrofit:${Versions.Network.Retrofit}",
         "com.squareup.okhttp3:logging-interceptor:${Versions.Network.OkHttp}",
+        "com.squareup.okhttp3:okhttp:${Versions.Network.OkHttp}",
         "com.squareup.retrofit2:converter-jackson:${Versions.Network.Retrofit}"
     )
 
@@ -42,9 +43,13 @@ object Dependencies {
     val Debug = listOf(
         "com.squareup.leakcanary:leakcanary-android:${Versions.Util.LeakCanary}"
     )
+
     object Test {
         const val JunitApi = "org.junit.jupiter:junit-jupiter-api:${Versions.Test.JUnit}"
         const val JunitEngine = "org.junit.jupiter:junit-jupiter-engine:${Versions.Test.JUnit}"
         const val Coroutine = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.Test.Coroutine}"
+        const val hilt = "com.google.dagger:hilt-android-testing:${Versions.Jetpack.Hilt}"
+        const val Mockk = "io.mockk:mockk:${Versions.Test.Mockk}"
+        const val MockkWebServer = "com.squareup.okhttp3:mockwebserver:${Versions.Network.OkHttp}"
     }
 }
