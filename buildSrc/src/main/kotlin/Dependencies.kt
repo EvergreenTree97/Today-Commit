@@ -24,6 +24,13 @@ object Dependencies {
         "com.squareup.retrofit2:converter-jackson:${Versions.Network.Retrofit}"
     )
 
+    val Jackson = listOf(
+        "com.fasterxml.jackson.core:jackson-core:${Versions.Util.Jackson}",
+        "com.fasterxml.jackson.core:jackson-databind:${Versions.Util.Jackson}",
+        "com.fasterxml.jackson.core:jackson-annotations:${Versions.Util.Jackson}",
+        "com.fasterxml.jackson.module:jackson-module-kotlin:${Versions.Util.Jackson}"
+    )
+
     val Compose = listOf(
         "androidx.compose.material3:material3:${Versions.Compose.Material3}",
         "androidx.activity:activity-compose:${Versions.Compose.Activity}",
@@ -50,6 +57,5 @@ object Dependencies {
         const val Coroutine = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.Test.Coroutine}"
         const val hilt = "com.google.dagger:hilt-android-testing:${Versions.Jetpack.Hilt}"
         const val Mockk = "io.mockk:mockk:${Versions.Test.Mockk}"
-        const val MockkWebServer = "com.squareup.okhttp3:mockwebserver:${Versions.Network.OkHttp}"
     }
 }

@@ -24,6 +24,7 @@ object Versions {
 
     object Util {
         const val LeakCanary = "2.9.1"
+        const val Jackson = "2.13.3"
         const val SecretsGradlePlugin = "2.0.0"
         const val CheckDependencyUpdates = "1.5.0"
     }
