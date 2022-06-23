@@ -1,6 +1,14 @@
-package com.evergreen.todaycommit
+package com.evergreen.todaycommit.util
 
-internal object Utils{
-    fun readResourceString(fileName: String) =
-        this::class.java.classLoader?.getResource(fileName)?.readText().orEmpty()
+import java.io.File
+
+internal object Utils {
+    fun readResourceString(fileName: String): String {
+        val file = File(javaClass.classLoader.getResource(fileName).file)
+        return file.bufferedReader().use {
+            val str = it.readText()
+            it.close()
+            str
+        }
+    }
 }
