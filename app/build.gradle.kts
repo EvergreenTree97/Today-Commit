@@ -49,12 +49,12 @@ dependencies {
     Dependencies.Compose.forEach(::implementation)
     Dependencies.Network.forEach(::implementation)
     Dependencies.Jetpack.forEach(::implementation)
+    Dependencies.Jackson.forEach(::implementation)
     implementation(Dependencies.FirebaseBom)
     testRuntimeOnly(Dependencies.Test.JunitEngine)
     testImplementation(Dependencies.Test.JunitApi)
     testImplementation(Dependencies.Test.Coroutine)
     testImplementation(Dependencies.Test.Mockk)
-    testImplementation(Dependencies.Test.MockkWebServer)
     Dependencies.Debug.forEach(::debugImplementation)
     Dependencies.Compiler.forEach(::kapt)
 
