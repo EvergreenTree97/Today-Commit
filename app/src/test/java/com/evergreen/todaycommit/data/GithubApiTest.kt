@@ -1,63 +1,42 @@
 package com.evergreen.todaycommit.data
 
-import com.evergreen.todaycommit.data.remote.api.GithubApi
-import com.evergreen.todaycommit.data.remote.repository.GithubRepositoryImpl
+
+import com.evergreen.todaycommit.data.extension.toModel
+import com.evergreen.todaycommit.data.mapper.toDomain
+import com.evergreen.todaycommit.data.model.GithubUserData
 import com.evergreen.todaycommit.domain.model.GithubUser
 import com.evergreen.todaycommit.domain.repository.GithubRepository
-import com.evergreen.todaycommit.enqueueResponse
-import kotlinx.coroutines.runBlocking
-import okhttp3.OkHttpClient
-import okhttp3.mockwebserver.MockWebServer
-import org.junit.jupiter.api.AfterEach
-import org.junit.jupiter.api.Assertions
+import io.mockk.coEvery
+import io.mockk.impl.annotations.MockK
+import io.mockk.junit5.MockKExtension
+import kotlinx.coroutines.test.runTest
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
-import retrofit2.Retrofit
-import retrofit2.converter.jackson.JacksonConverterFactory
-import java.util.concurrent.TimeUnit
+import org.junit.jupiter.api.extension.ExtendWith
 
-
+@ExtendWith(MockKExtension::class)
 class GithubApiTest {
-    private val mockWebServer = MockWebServer()
 
-    private lateinit var repository: GithubRepository
+    @MockK
+    private lateinit var githubRepository: GithubRepository
 
     @BeforeEach
     fun init() {
-        val client = OkHttpClient.Builder()
-            .connectTimeout(1, TimeUnit.SECONDS)
-            .writeTimeout(1, TimeUnit.SECONDS)
-            .build()
+        coEvery {
+            githubRepository.getUsers()
+        } returns GithubApiResponseDummy
+            .users
+            .toModel<GithubUserData>()
+            .toDomain()
 
-        val api = Retrofit.Builder()
-            .baseUrl(mockWebServer.url("/"))
-            .client(client)
-            .addConverterFactory(JacksonConverterFactory.create())
-            .build()
-            .create(GithubApi::class.java)
-
-        repository = GithubRepositoryImpl(api)
 
     }
 
     @DisplayName("github api test")
     @Test
-    fun `fetch github api data must be 20`() {
-        mockWebServer.enqueueResponse("github_user.json", 200)
-        runBlocking {
-            val actual = repository.getUsers()
-            val expected = GithubUser(
-                21
-            )
-            Assertions.assertEquals(actual, expected)
-        }
-
-
-    }
-
-    @AfterEach
-    fun tearDown() {
-        mockWebServer.shutdown()
+    fun `fetch github api data must be 20`() = runTest {
+        val users = githubRepository.getUsers()
+        assert(users.followers == 20)
     }
 }
