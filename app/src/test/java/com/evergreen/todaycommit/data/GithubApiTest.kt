@@ -24,7 +24,7 @@ class GithubApiTest {
     @BeforeEach
     fun init() {
         coEvery {
-            githubRepository.getUsers()
+            githubRepository.getUsers("EvergreenTree97")
         } returns GithubApiResponseDummy
             .users
             .toModel<GithubUserData>()
@@ -35,8 +35,8 @@ class GithubApiTest {
 
     @DisplayName("github api test")
     @Test
-    fun `fetch github api data must be 20`() = runTest {
-        val users = githubRepository.getUsers()
-        assert(users.followers == 20)
+    fun `fetch github contribution first count data must be 2`() = runTest {
+        val users = githubRepository.getUsers("EvergreenTree97")
+        assert(users.userName == "EvergreenTree97")
     }
 }
