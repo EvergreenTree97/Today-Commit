@@ -1,3 +1,5 @@
+import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
+
 plugins {
     id("com.android.application")
     id("kotlin-android")
@@ -17,10 +19,12 @@ android {
         targetSdk = Application.targetSdk
         versionCode = Application.versionCode
         versionName = Application.versionName
+        buildConfigField("String","GITHUB_TOKEN", getApiKey("GITHUB_TOKEN"))
     }
 
     buildTypes {
         release {
+
             isDebuggable = false
             isMinifyEnabled = true
             isShrinkResources = true
@@ -39,7 +43,6 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = Versions.Compose.Main
     }
-
 }
 
 dependencies {
@@ -58,4 +61,8 @@ dependencies {
     Dependencies.Debug.forEach(::debugImplementation)
     Dependencies.Compiler.forEach(::kapt)
 
+}
+
+fun getApiKey(propertyKey: String): String {
+    return gradleLocalProperties(rootDir).getProperty(propertyKey)
 }
