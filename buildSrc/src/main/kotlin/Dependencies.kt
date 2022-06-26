@@ -39,6 +39,7 @@ object Dependencies {
         "androidx.lifecycle:lifecycle-viewmodel-compose:${Versions.Compose.LifecycleViewModel}",
         "com.google.accompanist:accompanist-navigation-animation:${Versions.Compose.Accompanist}",
         "androidx.constraintlayout:constraintlayout-compose:${Versions.Compose.ConstraintLayout}",
+        "androidx.hilt:hilt-navigation-compose:${Versions.Compose.HiltNavigationCompose}",
         "androidx.compose.ui:ui-tooling:${Versions.Compose.Main}",
         "androidx.compose.ui:ui-tooling-preview:${Versions.Compose.Main}"
     )

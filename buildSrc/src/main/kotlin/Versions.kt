@@ -40,6 +40,7 @@ object Versions {
         const val ConstraintLayout = "1.0.0"
         const val LifecycleViewModel = "2.4.1"
         const val Accompanist = "0.24.4-alpha"
+        const val HiltNavigationCompose = "1.0.0"
     }
 
     object OssLicense {
