@@ -1,4 +1,4 @@
-package com.evergreen.todaycommit.ui.theme
+package com.evergreen.todaycommit.presentation.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

@@ -1,9 +1,9 @@
-package com.evergreen.todaycommit.ui
+package com.evergreen.todaycommit.presentation.main
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import com.evergreen.todaycommit.ui.theme.TodayCommitTheme
+import com.evergreen.todaycommit.presentation.theme.TodayCommitTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

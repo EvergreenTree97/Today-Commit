@@ -2,7 +2,6 @@ package com.evergreen.todaycommit.data.remote.repository
 
 import com.evergreen.todaycommit.data.extension.apiCall
 import com.evergreen.todaycommit.data.mapper.toDomain
-import com.evergreen.todaycommit.data.model.GithubUserData
 import com.evergreen.todaycommit.data.remote.api.GithubApi
 import com.evergreen.todaycommit.domain.model.GithubUser
 import com.evergreen.todaycommit.domain.repository.GithubRepository

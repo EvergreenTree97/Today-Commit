@@ -1,4 +1,4 @@
-package com.evergreen.todaycommit.ui
+package com.evergreen.todaycommit.presentation.main
 
 import android.util.Log
 import androidx.lifecycle.ViewModel

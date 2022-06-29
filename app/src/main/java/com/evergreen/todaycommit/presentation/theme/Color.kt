@@ -1,4 +1,4 @@
-package com.evergreen.todaycommit.ui.theme
+package com.evergreen.todaycommit.presentation.theme
 
 import androidx.compose.ui.graphics.Color
 

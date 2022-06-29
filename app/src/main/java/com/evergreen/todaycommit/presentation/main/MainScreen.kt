@@ -1,4 +1,4 @@
-package com.evergreen.todaycommit.ui
+package com.evergreen.todaycommit.presentation.main
 
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text

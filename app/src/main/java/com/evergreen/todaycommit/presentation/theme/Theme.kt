@@ -1,4 +1,4 @@
-package com.evergreen.todaycommit.ui.theme
+package com.evergreen.todaycommit.presentation.theme
 
 import android.app.Activity
 import android.os.Build

@@ -3,6 +3,10 @@ object Dependencies {
     val Essential = listOf(
         "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.Essential.Coroutines}"
     )
+
+    val Firebase = listOf(
+         "com.google.firebase:firebase-messaging:21.1.0"
+    )
     val Ktx = listOf(
         "androidx.core:core-ktx:${Versions.Ktx.Core}",
         "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.Ktx.LifeCycle}",
