@@ -2,7 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.evergreen.todaycommit">
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".TodayCommit"
         android:allowBackup="true"
@@ -14,6 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BrainFresher"
         tools:targetApi="32">
+
         <activity
             android:name=".presentation.main.MainActivity"
             android:exported="true"
@@ -26,11 +29,12 @@
             </intent-filter>
         </activity>
 
-        <service android:name="."
-                 android:exported="false">
-                 <intent-filter>
-                     <action android:name="com.google.firebase.MESSAGING_EVENT"/>
-                 </intent-filter>
+        <service
+            android:name=".firebase.FirebaseMessagingServiceImpl"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
         </service>
 
     </application>

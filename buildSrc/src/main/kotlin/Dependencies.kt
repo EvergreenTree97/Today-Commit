@@ -5,7 +5,8 @@ object Dependencies {
     )
 
     val Firebase = listOf(
-         "com.google.firebase:firebase-messaging:21.1.0"
+         "com.google.firebase:firebase-messaging",
+         "com.google.firebase:firebase-analytics",
     )
     val Ktx = listOf(
         "androidx.core:core-ktx:${Versions.Ktx.Core}",
