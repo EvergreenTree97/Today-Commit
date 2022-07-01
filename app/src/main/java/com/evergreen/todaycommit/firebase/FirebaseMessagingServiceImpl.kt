@@ -31,23 +31,22 @@ class FirebaseMessagingServiceImpl : FirebaseMessagingService() {
         super.onMessageReceived(remoteMessage)
         Log.d(TAG, "Message data : ${remoteMessage.data}")
         Log.d(TAG, "Message noti : ${remoteMessage.notification}")
-        remoteMessage.notification?.let {
-            Log.d(TAG, "Message Notification Body: ${it.body}")
-
+        remoteMessage.notification?.let { notification ->
+            Log.d(TAG, "Message Notification Body: ${notification.body}")
+            remoteMessage.notification?.let {
+                Log.d(TAG, "Message Notification Body: ${notification.body}")
+                sendNotification(notification.title, notification.body)
+            }
         }
         if (remoteMessage.data.isNotEmpty()) {
             Log.d(TAG, "Message Notification Body: ${remoteMessage.data}")
-            val type = remoteMessage.data["type"]?.let { NotificationType.valueOf(it) } ?: run {
-                NotificationType.NORMAL  //type 이 null 이면 NORMAL type 으로 처리
-            }
             val title = remoteMessage.data["title"]
             val message = remoteMessage.data["message"]
-            sendNotification(type, title, message)
+            sendNotification(title, message)
         }
     }
 
     private fun sendNotification(
-        type: NotificationType,
         title: String?,
         message: String?
     ) {
@@ -66,18 +65,16 @@ class FirebaseMessagingServiceImpl : FirebaseMessagingService() {
 
         //알림 생성
         NotificationManagerCompat.from(this)
-            .notify((System.currentTimeMillis()/100).toInt(), createNotification(type, title, message))  //알림이 여러개 표시되도록 requestCode 를 추가
+            .notify((System.currentTimeMillis()/100).toInt(), createNotification(title, message))  //알림이 여러개 표시되도록 requestCode 를 추가
     }
 
     /* 알림 설정 메서드 */
     private fun createNotification(
-        type: NotificationType,
         title: String?,
         message: String?
     ): Notification {
 
         val intent = Intent(this, MainActivity::class.java).apply {
-            putExtra("notificationType", " ${type.title} 타입 ")
             addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
         }
         val pendingIntent = PendingIntent.getActivity(this, (System.currentTimeMillis()/100).toInt(), intent, FLAG_UPDATE_CURRENT)  //알림이 여러개 표시되도록 requestCode 를 추가
@@ -89,16 +86,6 @@ class FirebaseMessagingServiceImpl : FirebaseMessagingService() {
             .setContentIntent(pendingIntent)
             .setAutoCancel(true)
 
-        //type 에 따라 style 설정
-        when (type) {
-            NotificationType.NORMAL -> Unit
-            NotificationType.EXPANDABLE -> {
-                notificationBuilder.setStyle(
-                    NotificationCompat.BigTextStyle()
-                        .bigText("$message 😀")
-                )
-            }
-        }
         return notificationBuilder.build()
     }
 }
