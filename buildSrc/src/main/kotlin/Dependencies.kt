@@ -46,7 +46,8 @@ object Dependencies {
         "androidx.constraintlayout:constraintlayout-compose:${Versions.Compose.ConstraintLayout}",
         "androidx.hilt:hilt-navigation-compose:${Versions.Compose.HiltNavigationCompose}",
         "androidx.compose.ui:ui-tooling:${Versions.Compose.Main}",
-        "androidx.compose.ui:ui-tooling-preview:${Versions.Compose.Main}"
+        "androidx.compose.ui:ui-tooling-preview:${Versions.Compose.Main}",
+        "io.coil-kt:coil-compose:${Versions.Compose.Coil}"
     )
 
     val Compiler = listOf(
