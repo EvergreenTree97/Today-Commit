@@ -4,9 +4,6 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.evergreen.todaycommit.domain.usecase.GetGithubUserUseCase
-import com.evergreen.todaycommit.firebase.FirebaseMessagingServiceImpl
-import com.google.firebase.messaging.FirebaseMessaging
-import com.google.firebase.messaging.FirebaseMessagingService
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
