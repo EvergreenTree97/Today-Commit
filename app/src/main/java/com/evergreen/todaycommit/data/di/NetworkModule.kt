@@ -26,7 +26,7 @@ class NetworkModule {
         okHttpClient: OkHttpClient
     ): Retrofit =
         Retrofit.Builder()
-            .baseUrl("https://api.github.com")
+            .baseUrl("https://skyline.github.com/")
             .client(okHttpClient)
             .addConverterFactory(converterFactory)
             .build()
