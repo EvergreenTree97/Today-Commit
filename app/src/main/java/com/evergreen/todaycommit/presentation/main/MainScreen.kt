@@ -31,6 +31,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.evergreen.todaycommit.R
+import com.evergreen.todaycommit.presentation.extension.collectAsStateWithLifecycleRemember
 import com.evergreen.todaycommit.presentation.main.components.RoundCornerBox
 import com.evergreen.todaycommit.presentation.theme.Background
 import com.evergreen.todaycommit.presentation.theme.Black
@@ -50,6 +51,8 @@ fun MainPreview() {
 fun MainScreen(
     viewModel: MainViewModel = hiltViewModel()
 ) {
+    val githubUser = viewModel.githubUser.collectAsStateWithLifecycleRemember(null).value
+    val userName = githubUser?.userName
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -83,7 +86,7 @@ fun MainScreen(
             Text(
                 text = buildAnnotatedString {
                     withStyle(SpanStyle(fontWeight = FontWeight.Bold)) {
-                        append("OOO")
+                        append(userName ?: "연동 안됨")
                     }
                     append("님\n오늘도 잔디를 심어보세요!")
                 },
