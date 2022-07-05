@@ -41,6 +41,7 @@ object Dependencies {
         "androidx.activity:activity-compose:${Versions.Compose.Activity}",
         "com.google.accompanist:accompanist-placeholder:${Versions.Compose.Accompanist}",
         "com.google.accompanist:accompanist-swiperefresh:${Versions.Compose.Accompanist}",
+        "com.google.accompanist:accompanist-systemuicontroller:${Versions.Compose.Accompanist}",
         "androidx.lifecycle:lifecycle-viewmodel-compose:${Versions.Compose.LifecycleViewModel}",
         "com.google.accompanist:accompanist-navigation-animation:${Versions.Compose.Accompanist}",
         "androidx.constraintlayout:constraintlayout-compose:${Versions.Compose.ConstraintLayout}",
@@ -62,7 +63,6 @@ object Dependencies {
         const val JunitApi = "org.junit.jupiter:junit-jupiter-api:${Versions.Test.JUnit}"
         const val JunitEngine = "org.junit.jupiter:junit-jupiter-engine:${Versions.Test.JUnit}"
         const val Coroutine = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.Test.Coroutine}"
-        const val hilt = "com.google.dagger:hilt-android-testing:${Versions.Jetpack.Hilt}"
         const val Mockk = "io.mockk:mockk:${Versions.Test.Mockk}"
     }
 }
