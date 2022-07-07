@@ -3,6 +3,7 @@ package com.evergreen.todaycommit.presentation.main
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -22,6 +23,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
@@ -31,7 +33,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.evergreen.todaycommit.R
+import com.evergreen.todaycommit.domain.model.getTodayContribution
 import com.evergreen.todaycommit.presentation.extension.collectAsStateWithLifecycleRemember
+import com.evergreen.todaycommit.presentation.extension.getExplainString
+import com.evergreen.todaycommit.presentation.extension.getGrassPainter
+import com.evergreen.todaycommit.presentation.main.components.AnimationRefresh
 import com.evergreen.todaycommit.presentation.main.components.RoundCornerBox
 import com.evergreen.todaycommit.presentation.theme.Background
 import com.evergreen.todaycommit.presentation.theme.Black
@@ -52,7 +58,9 @@ fun MainScreen(
     viewModel: MainViewModel = hiltViewModel()
 ) {
     val githubUser = viewModel.githubUser.collectAsStateWithLifecycleRemember(null).value
-    val userName = githubUser?.userName
+    val userName = githubUser?.userName ?: "unknown"
+    val todayContribution = githubUser?.getTodayContribution() ?: 0
+
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -76,6 +84,7 @@ fun MainScreen(
                 )
 
                 Image(
+                    modifier = Modifier.clickable { }, //TODO
                     painter = painterResource(id = R.drawable.notification),
                     contentDescription = "notification"
                 )
@@ -84,9 +93,10 @@ fun MainScreen(
             Spacer(modifier = Modifier.height(21.dp))
 
             Text(
+                modifier = Modifier.padding(start = 5.dp),
                 text = buildAnnotatedString {
                     withStyle(SpanStyle(fontWeight = FontWeight.Bold)) {
-                        append(userName ?: "연동 안됨")
+                        append(userName)
                     }
                     append("님\n오늘도 잔디를 심어보세요!")
                 },
@@ -118,7 +128,7 @@ fun MainScreen(
                                 )
                             ),
 
-                        painter = painterResource(id = R.drawable.grass1),
+                        painter = painterResource(todayContribution.getGrassPainter()),
                         contentDescription = "notification"
                     )
                 }
@@ -130,13 +140,14 @@ fun MainScreen(
                         .fillMaxWidth()
                         .height(68.dp)
                 ) {
+                    val explainString = todayContribution.getExplainString()
                     Text(
                         modifier = Modifier.padding(start = 16.dp),
                         text = buildAnnotatedString {
                             withStyle(SpanStyle(fontSize = 14.sp, fontWeight = FontWeight.Bold)) {
-                                append("지금은 땅이 쉬는중이에요\n")
+                                append(stringResource(id = explainString.first))
                             }
-                            append("커밋해서 잔디 씨앗을 뿌려주세요")
+                            append(stringResource(id = explainString.second))
                         },
                         color = Black,
                         fontSize = 12.sp,
@@ -150,9 +161,23 @@ fun MainScreen(
                 RoundCornerBox(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(91.dp)
+                        .height(105.dp)
                 ) {
-                    Column(modifier = Modifier.padding(16.dp)) {
+                    Box(
+                        modifier = Modifier
+                            .align(Alignment.TopEnd)
+                            .padding(top = 10.dp, end = 10.dp)
+                    ) {
+                        AnimationRefresh {
+                            viewModel.fetchUser()
+                        }
+                    }
+
+                    Column(
+                        modifier = Modifier
+                            .padding(16.dp)
+                            .fillMaxWidth()
+                    ) {
                         Text(
                             text = buildAnnotatedString {
                                 withStyle(
@@ -161,7 +186,7 @@ fun MainScreen(
                                         fontWeight = FontWeight.Bold
                                     )
                                 ) {
-                                    append("오늘 커밋 횟수 0")
+                                    append("오늘 커밋 횟수 $todayContribution")
                                     withStyle(SpanStyle(color = Grey300)) {
                                         append("/10\n")
                                     }
@@ -174,11 +199,12 @@ fun MainScreen(
                             fontWeight = FontWeight.Normal
                         )
                         Spacer(modifier = Modifier.height(12.dp))
+
                         LinearProgressIndicator(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .clip(RoundedCornerShape(6.dp))
                                 .height(12.dp)
+                                .clip(RoundedCornerShape(6.dp))
                                 .border(
                                     width = 1.dp,
                                     color = Green300,
@@ -186,11 +212,13 @@ fun MainScreen(
                                 ),
                             color = Green300,
                             trackColor = White,
-                            progress = 0.7f
+                            progress = (todayContribution).toFloat() / 10
                         )
                     }
                 }
+
                 Spacer(modifier = Modifier.height(16.dp))
+
                 Row(
                     Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceAround
@@ -199,6 +227,7 @@ fun MainScreen(
                         modifier = Modifier
                             .weight(1f)
                             .height(71.dp)
+                            .clickable { }
                     ) {
                         Column(
                             modifier = Modifier.padding(start = 16.dp, end = 16.dp)
@@ -225,7 +254,7 @@ fun MainScreen(
                                     verticalAlignment = Alignment.CenterVertically
                                 ) {
                                     Text(
-                                        text = "3등",
+                                        text = "서비스 준비중",
                                         color = Black,
                                         fontSize = 14.sp,
                                         fontFamily = suit,
@@ -248,6 +277,7 @@ fun MainScreen(
                         modifier = Modifier
                             .weight(1f)
                             .height(71.dp)
+                            .clickable { }
                     ) {
                         Column(
                             modifier = Modifier.padding(start = 16.dp, end = 16.dp)
