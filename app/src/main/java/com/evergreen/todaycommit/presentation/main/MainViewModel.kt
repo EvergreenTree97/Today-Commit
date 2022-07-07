@@ -12,6 +12,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlin.math.log
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
@@ -26,9 +27,9 @@ class MainViewModel @Inject constructor(
         fetchUser()
     }
 
-    private fun fetchUser() {
+    internal fun fetchUser() {
         viewModelScope.launch(Dispatchers.IO) {
-            githubUserUseCase("EvergreenTree97").onSuccess {
+            githubUserUseCase("evergreentree97").onSuccess {
                 Log.d("성공", it.userName)
                 _githubUser.emit(it)
             }.onFailure {
