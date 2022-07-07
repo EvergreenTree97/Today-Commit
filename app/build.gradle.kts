@@ -53,6 +53,7 @@ dependencies {
     Dependencies.Network.forEach(::implementation)
     Dependencies.Jetpack.forEach(::implementation)
     Dependencies.Jackson.forEach(::implementation)
+    Dependencies.Util.forEach(::implementation)
     Dependencies.Firebase.forEach(::implementation)
     implementation(platform(Dependencies.FirebaseBom))
     testRuntimeOnly(Dependencies.Test.JunitEngine)
