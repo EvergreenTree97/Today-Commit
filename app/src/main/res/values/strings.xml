@@ -1,4 +1,16 @@
 <resources>
     <string name="app_name">TodayCommit</string>
     <string name="channel_name">TodayCommit</string>
+
+    <string name="grass1_head">지금은 땅이 쉬는 중이에요 😴\n</string>
+    <string name="grass1_body">커밋해서 잔디 씨앗을 뿌려주세요</string>
+    <string name="grass2_head">싹 틔울 준비를 하고 있어요 🌞\n</string>
+    <string name="grass2_body">양분은 오직 커밋뿐!</string>
+    <string name="grass3_head">더 클 수 있게 오늘도 열심히! 🌱\n</string>
+    <string name="grass3_body">양분은 오직 커밋뿐!</string>
+    <string name="grass4_head">잔디가 무럭무럭 자라고 있어요 💧\n</string>
+    <string name="grass4_body">양분은 오직 커밋뿐!</string>
+    <string name="grass5_head">축하해요! 잔디가 끝까지 성장했어요 🍀\n</string>
+    <string name="grass5_body">잔디 마스터로 한 걸음 성장!</string>
+
 </resources>
