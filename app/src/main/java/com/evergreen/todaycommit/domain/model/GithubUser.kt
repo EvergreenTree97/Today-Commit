@@ -1,6 +1,9 @@
 package com.evergreen.todaycommit.domain.model
 
-import com.fasterxml.jackson.annotation.JsonProperty
+import org.threeten.bp.LocalDate
+import org.threeten.bp.temporal.WeekFields
+import java.util.Calendar.SUNDAY
+
 
 data class GithubUser(
     val userName: String,
@@ -21,4 +24,15 @@ data class GithubUser(
             val count: Int
         )
     }
+}
+
+fun GithubUser.getTodayContribution(): Int {
+    val localDate = LocalDate.now()
+    val weekOfYear = localDate.get(WeekFields.ISO.weekOfYear())
+    val orderDayOfWeek = localDate.dayOfWeek.value
+    val dayContribution = this.contributions.first {
+        it.week == weekOfYear
+    }.days[orderDayOfWeek]
+    return dayContribution.count
+
 }
