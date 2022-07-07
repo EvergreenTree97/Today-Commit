@@ -18,6 +18,10 @@ object Dependencies {
         "androidx.core:core-splashscreen:${Versions.Ui.Splash}",
     )
 
+    val Util = listOf(
+        "com.jakewharton.threetenabp:threetenabp:${Versions.Util.ThreeTen}"
+    )
+
     val Jetpack = listOf(
         "com.google.dagger:hilt-android:${Versions.Jetpack.Hilt}",
     )

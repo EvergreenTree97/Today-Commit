@@ -27,6 +27,7 @@ object Versions {
         const val Jackson = "2.13.3"
         const val SecretsGradlePlugin = "2.0.0"
         const val CheckDependencyUpdates = "1.5.0"
+        const val ThreeTen = "1.4.0"
     }
 
     object Jetpack {
