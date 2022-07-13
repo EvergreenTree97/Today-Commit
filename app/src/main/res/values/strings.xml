@@ -14,9 +14,13 @@
     <string name="grass5_head">축하해요! 잔디가 끝까지 성장했어요 🍀\n</string>
     <string name="grass5_body">잔디 마스터로 한 걸음 성장!</string>
 
-    <!-- Login -->
+    <!-- OnBoarding -->
     <string name="greeting_title">반가워요!\nGithub 유저 네임을 적어주세요</string>
     <string name="greeting_sub">나중에 수정이 불가하니, 정확하게 입력해주세요 :)</string>
     <string name="username_placeholder">Github 유저네임 입력</string>
     <string name="username_focused_placeholder">유저네임을 정확하게 입력해주세요</string>
+    <string name="profile_content_description">profile</string>
+    <string name="is_account_correct">이 계정이 맞으신가요?</string>
+    <string name="rewrite">다시쓰기</string>
+    <string name="yes">네!</string>
 </resources>
