@@ -10,8 +10,10 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -35,6 +37,12 @@ private fun UserNameInputPreview() {
 @Composable
 internal fun UserNameInputScreen() {
     val (userName, setUserName) = remember { mutableStateOf("") }
+    var isDialogOpen by remember { mutableStateOf(false) }
+    if (isDialogOpen) {
+        UserCheckDialog(userName = userName) {
+            isDialogOpen = it
+        }
+    }
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -73,8 +81,15 @@ internal fun UserNameInputScreen() {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             RoundCornerButton(
-                modifier = Modifier.padding(start = 20.dp, end = 20.dp),
-                onClick = { /*TODO*/ },
+                modifier = Modifier
+                    .padding(start = 20.dp, end = 20.dp)
+                    .fillMaxWidth()
+                    .height(48.dp),
+                onClick = {
+                    if (userName.isNotEmpty()) {
+                        isDialogOpen = true
+                    }
+                },
                 color = if (userName.isNotEmpty()) {
                     Green300
                 } else {
