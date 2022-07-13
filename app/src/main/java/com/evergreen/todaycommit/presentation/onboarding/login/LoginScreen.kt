@@ -45,7 +45,10 @@ internal fun LoginScreen() {
         )
         Spacer(modifier = Modifier.height(300.dp))
         RoundCornerButton(
-            Modifier.padding(start = 20.dp, end = 20.dp),
+            Modifier
+                .padding(start = 20.dp, end = 20.dp)
+                .fillMaxWidth()
+                .height(48.dp),
             onClick = { /*TODO*/ },
             color = Green300
         ) {

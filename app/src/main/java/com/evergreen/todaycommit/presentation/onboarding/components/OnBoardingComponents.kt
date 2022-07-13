@@ -1,6 +1,7 @@
 package com.evergreen.todaycommit.presentation.onboarding.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -45,14 +46,14 @@ internal fun RoundCornerButton(
     onClick: () -> Unit,
     color: Color,
     shape: RoundedCornerShape = RoundedCornerShape(20.dp),
+    contentPadding: PaddingValues = PaddingValues(0.dp),
     contents: @Composable RowScope.() -> Unit
 ) {
     Button(
-        modifier = modifier
-            .fillMaxWidth()
-            .height(48.dp),
+        modifier = modifier,
         onClick = { onClick() },
         shape = shape,
+        contentPadding = contentPadding,
         colors = ButtonDefaults.buttonColors(color)
     ) {
         contents()
