@@ -22,10 +22,6 @@ class MainViewModel @Inject constructor(
     val githubUser: StateFlow<GithubUser?>
         get() = _githubUser.asStateFlow()
 
-    init {
-        fetchUser()
-    }
-
     internal fun fetchUser() {
         viewModelScope.launch(Dispatchers.IO) {
             githubUserUseCase("evergreentree97").onSuccess {

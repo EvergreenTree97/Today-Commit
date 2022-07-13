@@ -19,6 +19,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -51,6 +52,9 @@ import com.evergreen.todaycommit.presentation.theme.suit
 fun MainScreen(
     viewModel: MainViewModel = hiltViewModel()
 ) {
+    LaunchedEffect(Unit){
+        viewModel.fetchUser()
+    }
     val githubUser = viewModel.githubUser.collectAsStateWithLifecycleRemember(null).value
     val userName = githubUser?.userName ?: "unknown"
     val todayContribution = githubUser?.getTodayContribution() ?: 0
