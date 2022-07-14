@@ -15,6 +15,8 @@
     <string name="grass5_body">잔디 마스터로 한 걸음 성장!</string>
 
     <!-- OnBoarding -->
+    <string name="login">로그인</string>
+    <string name="next">다음</string>
     <string name="greeting_title">반가워요!\nGithub 유저 네임을 적어주세요</string>
     <string name="greeting_sub">나중에 수정이 불가하니, 정확하게 입력해주세요 :)</string>
     <string name="username_placeholder">Github 유저네임 입력</string>
