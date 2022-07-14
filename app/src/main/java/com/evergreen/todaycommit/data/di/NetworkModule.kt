@@ -1,6 +1,6 @@
 package com.evergreen.todaycommit.data.di
 
-import com.evergreen.todaycommit.data.remote.api.GithubApi
+import com.evergreen.todaycommit.data.remote.api.SkylineApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -17,11 +17,12 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun provideGithubService(retrofit: Retrofit): GithubApi = retrofit.create(GithubApi::class.java)
+    fun provideSkylineService(retrofit: Retrofit): SkylineApi =
+        retrofit.create(SkylineApi::class.java)
 
     @Provides
     @Singleton
-    fun provideRetrofit(
+    fun provideSkylineRetrofit(
         converterFactory: JacksonConverterFactory,
         okHttpClient: OkHttpClient
     ): Retrofit =

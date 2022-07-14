@@ -1,7 +1,7 @@
 package com.evergreen.todaycommit.data.di
 
-import com.evergreen.todaycommit.data.remote.repository.GithubRepositoryImpl
-import com.evergreen.todaycommit.domain.repository.GithubRepository
+import com.evergreen.todaycommit.data.repository.SkylineRepositoryImpl
+import com.evergreen.todaycommit.domain.repository.SkylineRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -14,7 +14,7 @@ internal abstract class RepositoryModule {
 
     @Binds
     @Singleton
-    abstract fun bindGithubUserRepository(
-        repository: GithubRepositoryImpl
-    ): GithubRepository
+    abstract fun bindSkylineRepository(
+        repository: SkylineRepositoryImpl
+    ): SkylineRepository
 }

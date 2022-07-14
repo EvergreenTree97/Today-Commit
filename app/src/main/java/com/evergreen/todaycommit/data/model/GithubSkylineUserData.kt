@@ -2,7 +2,7 @@ package com.evergreen.todaycommit.data.model
 
 import com.fasterxml.jackson.annotation.JsonProperty
 
-data class GithubUserData(
+data class GithubSkylineUserData(
     @JsonProperty("username")
     val userName: String,
     @JsonProperty("year")

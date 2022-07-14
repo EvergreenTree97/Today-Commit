@@ -2,10 +2,9 @@ package com.evergreen.todaycommit.domain.model
 
 import org.threeten.bp.LocalDate
 import org.threeten.bp.temporal.WeekFields
-import java.util.Calendar.SUNDAY
 
 
-data class GithubUser(
+data class GithubSkylineUser(
     val userName: String,
     val year: Int,
     val min: Int,
@@ -26,7 +25,7 @@ data class GithubUser(
     }
 }
 
-fun GithubUser.getTodayContribution(): Int {
+fun GithubSkylineUser.getTodayContribution(): Int {
     val localDate = LocalDate.now()
     val weekOfYear = localDate.get(WeekFields.ISO.weekOfYear())
     val orderDayOfWeek = localDate.dayOfWeek.value
